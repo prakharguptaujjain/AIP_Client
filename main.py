@@ -6,6 +6,8 @@ import urllib.request
 from bs4 import BeautifulSoup
 from utils.initialiser import *
 from utils.firewall_integrator import *
+from utils.auto_trim_csv_using_bench_value import *
+from utils.whitelisted_ip import *
 
 CONFIG='config.json'
 URL='https://mcfp.felk.cvut.cz/publicDatasets/CTU-AIPP-BlackList/Latest/'
@@ -61,6 +63,11 @@ def goodbye():
     print("AU REVOIR! (French)")
     print("TCHAU! (Portuguese)")
 
+def text_for_advanced_config():
+    print("!!!!!!!!!!!!!!!")
+    print("For advance configuration, please run the program",f"\033[1madvance_config.py\033[0m")
+    print("!!!!!!!!!!!!!!!")
+
 if __name__ == '__main__':
     # # Check if the user has sudo permissions
     # if os.geteuid() != 0:
@@ -68,6 +75,9 @@ if __name__ == '__main__':
     initialise(CONFIG)
     unblock_ip_firewall(CONFIG)
     download_file_with_model_name()
+    whiteliste_ip()
+    trim()
     block_ip_firewall(CONFIG)
+    text_for_advanced_config()
     goodbye()
     

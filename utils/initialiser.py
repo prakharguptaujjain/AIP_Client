@@ -64,6 +64,7 @@ def initialise(CONFIG):
             data['Initialised'] = True
             data['auto_update_firewall'] = False
             data['created_cron'] = False
+            data['advance_config'] = False
 
             #current time
             curr_time = time.time()
